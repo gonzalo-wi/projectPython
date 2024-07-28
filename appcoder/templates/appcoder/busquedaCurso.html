@@ -1,0 +1,7 @@
+{% extends "appcoder/base.html" %} {% load static%} {%block titulo%}Busqueda
+{%endblock titulo %} {%block contenidoCambiante%}
+<form action="/appcoder/buscar" method="GET">
+  <input type="number" name="comision" id="comision" />
+  <input type="submit" value="Buscar" />
+</form>
+{%endblock contenidoCambiante%}
