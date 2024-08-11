@@ -1,2 +1,6 @@
-{%extends "appcoder/base.html"%} {% block contenidoCambiante %} {% endblock %}
-{% block titulo %} Coder | Cursos {% endblock %}
+{% extends "appcoder/base.html" %} {% load static%} {%block titulo%}Cursos
+{%endblock titulo %} {%block contenidoCambiante%} {%for curso in cursos%}
+<p>Nombre: {{curso.nombre}} | Camada: {{curso.comision}}</p>
+<a href="{% url 'ActualizarCurso' curso.pk %}">Editar</a>
+<a href="{% url 'BorrarCurso' curso.pk %}">Borrar</a>
+{% endfor %} {%endblock contenidoCambiante%}

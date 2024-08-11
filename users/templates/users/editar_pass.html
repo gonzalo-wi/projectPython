@@ -1,0 +1,15 @@
+{% extends "appcoder/base.html" %} {% load static%} {%block titulo%} Editar
+Contrasenia {%endblock titulo%} {%block contenidoCambiante%}
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column">
+    <p class="fs-5 fw-bold">{{ msg_login }}</p>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{form}}
+      </table>
+      <input type="submit" value="Actualizar" />
+    </form>
+  </div>
+</div>
+{%endblock contenidoCambiante%}

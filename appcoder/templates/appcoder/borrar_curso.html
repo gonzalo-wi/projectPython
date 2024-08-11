@@ -1,0 +1,9 @@
+{% extends "appcoder/base.html" %} {% load static%} {%block titulo%}Borrar curso
+{% endblock titulo %} {%block contenidoCambiante%}
+<form action="" method="POST">
+  {% csrf_token %}
+  <p>¿Estas seguro que queres borrar el curso?</p>
+  {{curso.nombre}}
+  <input type="submit" value="Borrar" />
+</form>
+{%endblock contenidoCambiante%}

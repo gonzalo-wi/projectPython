@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from appcoder.models import *
 from appcoder.forms import *
-
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 # Create your views here.
 def inicio(request):
     return render(request,"appcoder/inicio.html")
@@ -80,3 +85,33 @@ def buscar(request):
     else:
         respuesta="No enviaste datos"
     return HttpResponse(respuesta)
+
+def leerProfesores(request):
+    profesores = Profesor.objects.all()
+    return render(request,"appcoder/leerProfesores.html",{"profesores": profesores})
+
+class CursoListView(ListView):
+    model = Curso
+    context_object_name = "cursos"
+    template_name = "appcoder/cursos.html"
+
+class CursoCreateView(CreateView):
+    model = Curso
+    context_object_name = "cursos"
+    template_name = "appcoder/create_curso.html"
+    success_url = reverse_lazy("cursos")
+    fields = ["nombre","comision"]
+
+class CursoUpdateView(UpdateView):
+    model = Curso
+    context_object_name = "cursos"
+    template_name = "appcoder/actualizar.html"
+    fields = ["nombre","comision"]  
+    success_url = reverse_lazy("cursos")
+
+class CursoDeleteView(DeleteView):
+    model = Curso
+    template_name = "appcoder/borrar_curso.html"
+    success_url = reverse_lazy("cursos")
+     
+      
