@@ -1,5 +1,7 @@
 {%extends "appcoder/base.html"%} {% block titulo %} Leer profesores{%endblock %}
-{% block contenidoCambiante %} {% for profesor in profesores %}
+{% block contenidoCambiante %}
+<h1>Profesores</h1>
+{% for profesor in profesores %}
 <li>
   <p>{{profesor.nombre}}</p>
   <p>{{profesor.apellido}}</p>

@@ -24,6 +24,9 @@ def profesores(request):
 def entregables(request):
     return render(request, "appcoder/entregables.html")
 
+def about(request):
+    return render(request,"appcoder/about.html")
+
 def form_con_api(request):
     if request.method == "POST":
         mi_formulario = CursoFormulario(request.POST)
@@ -95,21 +98,21 @@ class CursoListView(ListView):
     context_object_name = "cursos"
     template_name = "appcoder/cursos.html"
 
-class CursoCreateView(CreateView):
+class CursoCreateView(LoginRequiredMixin,CreateView):
     model = Curso
     context_object_name = "cursos"
     template_name = "appcoder/create_curso.html"
     success_url = reverse_lazy("cursos")
     fields = ["nombre","comision"]
 
-class CursoUpdateView(UpdateView):
+class CursoUpdateView(LoginRequiredMixin,UpdateView):
     model = Curso
     context_object_name = "cursos"
     template_name = "appcoder/actualizar.html"
     fields = ["nombre","comision"]  
     success_url = reverse_lazy("cursos")
 
-class CursoDeleteView(DeleteView):
+class CursoDeleteView(LoginRequiredMixin,DeleteView):
     model = Curso
     template_name = "appcoder/borrar_curso.html"
     success_url = reverse_lazy("cursos")

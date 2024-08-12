@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 from users.views import *
+
 urlpatterns = [
     path('login/',login_request, name='Login'),
     path('register/',register, name='Register'),
@@ -9,3 +10,4 @@ urlpatterns = [
     path('cambiar_contrasenia/',CambiarContrasenia.as_view(),name="CambiarContrasenia"),
     
 ]
+

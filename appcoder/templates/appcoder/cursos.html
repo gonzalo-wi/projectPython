@@ -1,6 +1,15 @@
-{% extends "appcoder/base.html" %} {% load static%} {%block titulo%}Cursos
-{%endblock titulo %} {%block contenidoCambiante%} {%for curso in cursos%}
-<p>Nombre: {{curso.nombre}} | Camada: {{curso.comision}}</p>
-<a href="{% url 'ActualizarCurso' curso.pk %}">Editar</a>
-<a href="{% url 'BorrarCurso' curso.pk %}">Borrar</a>
+{%extends "appcoder/base.html"%} {% block titulo %} Cursos {%endblock %} {%block
+contenidoCambiante %}{%block contenidoCambiante%}
+<h1>Cursos</h1>
+{%for curso in cursos%}
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">Nombre: {{curso.nombre}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">
+      Camada: {{curso.comision}}
+    </h6>
+    <a href="{% url 'ActualizarCurso' curso.pk %}" class="card-link">Editar</a>
+    <a href="{% url 'BorrarCurso' curso.pk %}" class="card-link">Borrar</a>
+  </div>
+</div>
 {% endfor %} {%endblock contenidoCambiante%}
